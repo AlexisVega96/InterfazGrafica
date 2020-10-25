@@ -3,6 +3,19 @@
 
 #include <QMainWindow>
 
+//****************************************************
+#include <QMainWindow>
+#include <QSerialPort>
+#include <QSerialPortInfo>
+#include <QMessageBox>
+//*****************************
+#include <QtSql/QSqlDatabase>
+#include <QtSql/QSqlQuery>
+#include <QtSql/QSqlError>
+#include <QTableWidgetItem>
+#include <QDateTime>
+//****************************************************
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -35,13 +48,22 @@ private slots:
 
     void on_radioButton_12_toggled(bool checked);
 
-    void on_radioButton_2_toggled(bool checked);
+    void on_pushButtonCONECTAR_clicked();
 
-    void on_radioButton_toggled(bool checked);
+    void on_actionLogin_triggered();
 
-    void on_radioButton_3_toggled(bool checked);
+    void on_pushButtonINGRESAR_clicked();
+
+    void on_pushButton_SALIR_clicked();
+
+    void on_pushButton_CREAR_clicked();
 
 private:
     Ui::MainWindow *ui;
+    QSqlDatabase db;
+    QString Portname;
+    QSerialPort *Port;
+    void EnumerarPuertos();
+
 };
 #endif // MAINWINDOW_H
